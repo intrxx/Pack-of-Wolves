@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameplayTagContainer.h"
 #include "GameFramework/Character.h"
 #include "WolfBase.generated.h"
 
@@ -14,6 +15,12 @@ class SWARMOFWOLVES_API AWolfBase : public ACharacter
 public:
 	// Sets default values for this character's properties
 	AWolfBase();
+
+	UPROPERTY(EditAnywhere)
+	float ScoutingStrength;
+	
+	UPROPERTY(VisibleAnywhere)
+	bool bIsScout = false;
 
 protected:
 	// Called when the game starts or when spawned

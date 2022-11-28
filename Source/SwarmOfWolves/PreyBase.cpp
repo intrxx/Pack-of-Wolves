@@ -20,6 +20,12 @@ void APreyBase::BeginPlay()
 	OriginTransform = GetTransform();
 
 	CurrentHealth = MaxHealth;
+
+	DeerAIController = Cast<ADeerAIController>(GetController());
+	if(!DeerAIController)
+	{
+		return;
+	}
 }
 
 // Called every frame
@@ -44,5 +50,11 @@ bool APreyBase::IsDead() const
 	}
 	return false;
 }
+
+ADeerAIController* APreyBase::GetDeerAIController()
+{
+	return DeerAIController;
+}
+
 
 

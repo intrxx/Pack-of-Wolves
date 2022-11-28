@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "DeerAIController.h"
 #include "GameFramework/Character.h"
 #include "PreyBase.generated.h"
 
@@ -35,6 +36,9 @@ public:
 	UPROPERTY()
 	FPreyData PreyData;
 
+	UFUNCTION()
+	class ADeerAIController* GetDeerAIController();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -55,6 +59,9 @@ private:
 
 	UPROPERTY(VisibleAnywhere)
 	float CurrentHealth;
+
+	UPROPERTY()
+	class ADeerAIController* DeerAIController;
 	
 
 };

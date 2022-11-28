@@ -15,14 +15,15 @@ AWolfBase::AWolfBase()
 void AWolfBase::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	ScoutingStrength = FMath::Rand();
+	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, FString::Printf(TEXT("Scouting Strength: %f"), ScoutingStrength));
 }
 
 // Called every frame
 void AWolfBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 // Called to bind functionality to input

@@ -2,9 +2,9 @@
 
 
 #include "BTTask_FindRandomLocation.h"
-
 #include "AIController.h"
 #include "NavigationSystem.h"
+#include "DeerAIController.h"
 #include "PreyBase.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "EnvironmentQuery/EnvQueryManager.h"
@@ -20,8 +20,8 @@ EBTNodeResult::Type UBTTask_FindRandomLocation::ExecuteTask(UBehaviorTreeCompone
 {
 	FNavLocation Location;
 
-	AAIController* AIController = OwnerComp.GetAIOwner();
-	APawn* AIPawn = AIController->GetPawn();
+	ADeerAIController* DAC = Cast<ADeerAIController>(OwnerComp.GetAIOwner());
+	APawn* AIPawn = DAC->GetPawn();
 
 	FVector OriginVector = Cast<APreyBase>(AIPawn)->OriginTransform.GetLocation();
 
@@ -29,7 +29,7 @@ EBTNodeResult::Type UBTTask_FindRandomLocation::ExecuteTask(UBehaviorTreeCompone
 
 	if(IsValid(NavSystem) && NavSystem->GetRandomPointInNavigableRadius(OriginVector, Radius, Location))
 	{
-		AIController->GetBlackboardComponent()->SetValueAsVector(BlackboardKey.SelectedKeyName, Location.Location);
+		DAC->GetBlackboardComponent()->SetValueAsVector(BlackboardKey.SelectedKeyName, Location.Location);
 	}
 	
 	FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);

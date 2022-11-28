@@ -3,6 +3,8 @@
 
 #include "WolfAIController.h"
 
+#include "BehaviorTree/BlackboardComponent.h"
+
 AWolfAIController::AWolfAIController()
 {
 	
@@ -16,6 +18,8 @@ void AWolfAIController::BeginPlay()
 	{
 		RunBehaviorTree(WolfBehaviorTree);
 	}
+
+	
 }
 
 void AWolfAIController::Tick(float DeltaSeconds)

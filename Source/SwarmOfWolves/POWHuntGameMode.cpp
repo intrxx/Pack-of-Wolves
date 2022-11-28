@@ -22,7 +22,7 @@ void APOWHuntGameMode::BeginPlay()
 		}
 	}
 
-	GEngine->AddOnScreenDebugMessage(-1,3,FColor::Black,FString::Printf(TEXT("Is Hunt active?: %hhd"), bIsHuntActive));
+	//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Black,FString::Printf(TEXT("Is Hunt active?: %hhd"), bIsHuntActive));
 }
 
 
