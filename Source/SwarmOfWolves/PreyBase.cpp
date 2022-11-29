@@ -28,7 +28,7 @@ void APreyBase::BeginPlay()
 	}
 
 	LifeStrength = FMath::Rand();
-	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Green, FString::Printf(TEXT("Prey Life Strength: %f"), LifeStrength));
+	//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Green, FString::Printf(TEXT("Prey Life Strength: %f"), LifeStrength));
 }
 
 // Called every frame

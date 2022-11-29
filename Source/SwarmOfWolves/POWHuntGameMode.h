@@ -17,18 +17,5 @@ class SWARMOFWOLVES_API APOWHuntGameMode : public AGameModeBase
 
 public:
 	APOWHuntGameMode();
-
-	UPROPERTY(VisibleAnywhere)
-	bool bIsHuntActive = false;
-
-protected:
-	virtual void BeginPlay() override;
-
-private:
-	UPROPERTY(EditAnywhere)
-	TSubclassOf<UUserWidget> HuntButtonWidgetClass;
-	
-	UPROPERTY()
-	UUserWidget* HuntButtonWidget;
 	
 };
