@@ -17,7 +17,7 @@ void AWolfBase::BeginPlay()
 	Super::BeginPlay();
 
 	ScoutingStrength = FMath::Rand();
-	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, FString::Printf(TEXT("Scouting Strength: %f"), ScoutingStrength));
+	//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, FString::Printf(TEXT("Scouting Strength: %f"), ScoutingStrength));
 }
 
 // Called every frame

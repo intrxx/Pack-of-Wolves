@@ -21,8 +21,6 @@ void APOWHuntGameMode::BeginPlay()
 			HuntButtonWidget->AddToViewport();
 		}
 	}
-
-	//GEngine->AddOnScreenDebugMessage(-1,3,FColor::Black,FString::Printf(TEXT("Is Hunt active?: %hhd"), bIsHuntActive));
 }
 
 

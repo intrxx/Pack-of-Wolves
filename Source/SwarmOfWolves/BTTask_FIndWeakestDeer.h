@@ -3,24 +3,24 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "WolfBase.h"
+#include "PreyBase.h"
 #include "BehaviorTree/Tasks/BTTask_BlackboardBase.h"
-#include "BTTask_SetScout.generated.h"
+#include "BTTask_FIndWeakestDeer.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class SWARMOFWOLVES_API UBTTask_SetScout : public UBTTask_BlackboardBase
+class SWARMOFWOLVES_API UBTTask_FIndWeakestDeer : public UBTTask_BlackboardBase
 {
 	GENERATED_BODY()
 
-	UBTTask_SetScout();
-	
+	UBTTask_FIndWeakestDeer();
+
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory);
 
 protected:
+
 	UPROPERTY()
-	AWolfBase* TempScout;
-	
+	APreyBase* TempWeakestDeer;
 };

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "PreyBase.h"
 #include "GameFramework/GameModeBase.h"
 #include "POWHuntGameMode.generated.h"
 
@@ -29,4 +30,5 @@ private:
 	
 	UPROPERTY()
 	UUserWidget* HuntButtonWidget;
+	
 };

@@ -16,7 +16,6 @@ UBTTask_SetScout::UBTTask_SetScout()
 EBTNodeResult::Type UBTTask_SetScout::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	AWolfAIController* AIController = Cast<AWolfAIController>(OwnerComp.GetAIOwner());
-	//AWolfBase* Wolf = Cast<AWolfBase>(AIController->GetPawn());
 	TArray<AWolfBase*> PotentialScouts;
 	
 	for(TActorIterator<AWolfBase> ActorITr(GetWorld()); ActorITr; ++ActorITr)
@@ -33,9 +32,7 @@ EBTNodeResult::Type UBTTask_SetScout::ExecuteTask(UBehaviorTreeComponent& OwnerC
 		}
 	}
 	
-	TempScout->bIsScout = true;
 	AIController->GetBlackboardComponent()->SetValueAsObject(BlackboardKey.SelectedKeyName, TempScout);
-	//AIController->GetBlackboardComponent()->SetValueAsBool(BlackboardKey.SelectedKeyName, TempScout->bIsScout = true);
 	FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
 	return EBTNodeResult::Succeeded;
 }

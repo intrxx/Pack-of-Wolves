@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "PreyBase.h"
+
 
 // Sets default values
 APreyBase::APreyBase()
@@ -26,6 +26,9 @@ void APreyBase::BeginPlay()
 	{
 		return;
 	}
+
+	LifeStrength = FMath::Rand();
+	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Green, FString::Printf(TEXT("Prey Life Strength: %f"), LifeStrength));
 }
 
 // Called every frame

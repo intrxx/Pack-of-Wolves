@@ -36,6 +36,12 @@ public:
 	UPROPERTY()
 	FPreyData PreyData;
 
+	UPROPERTY(VisibleAnywhere)
+	float LifeStrength;
+
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	bool bIsWeakest = false;
+
 	UFUNCTION()
 	class ADeerAIController* GetDeerAIController();
 
@@ -63,5 +69,4 @@ private:
 	UPROPERTY()
 	class ADeerAIController* DeerAIController;
 	
-
 };

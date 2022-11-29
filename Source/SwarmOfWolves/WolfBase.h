@@ -16,11 +16,8 @@ public:
 	// Sets default values for this character's properties
 	AWolfBase();
 
-	UPROPERTY(EditAnywhere)
-	float ScoutingStrength;
-	
 	UPROPERTY(VisibleAnywhere)
-	bool bIsScout = false;
+	float ScoutingStrength;
 
 protected:
 	// Called when the game starts or when spawned
