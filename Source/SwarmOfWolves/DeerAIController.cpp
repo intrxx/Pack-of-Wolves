@@ -18,9 +18,9 @@ void ADeerAIController::BeginPlay()
 	}
 }
 
-void ADeerAIController::Tick(float DeltaSeconds)
+FGenericTeamId ADeerAIController::GetGenericTeamId() const
 {
-	Super::Tick(DeltaSeconds);
-	
+	return TeamId;
 }
+
 

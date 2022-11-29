@@ -17,7 +17,8 @@ class SWARMOFWOLVES_API ADeerAIController : public AAIController
 public:
 	ADeerAIController();
 
-	virtual void Tick(float DeltaSeconds) override;
+	FGenericTeamId TeamId = FGenericTeamId(4);
+	virtual FGenericTeamId GetGenericTeamId() const override;
 
 protected:
 	virtual void BeginPlay() override;
