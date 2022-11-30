@@ -32,6 +32,7 @@ EBTNodeResult::Type UBTTask_SetScout::ExecuteTask(UBehaviorTreeComponent& OwnerC
 		}
 	}
 	
+	AIController->GetBlackboardComponent()->SetValueAsVector("ScoutBeginningLocation", TempScout->GetActorLocation());
 	AIController->GetBlackboardComponent()->SetValueAsObject(BlackboardKey.SelectedKeyName, TempScout);
 	FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
 	return EBTNodeResult::Succeeded;
