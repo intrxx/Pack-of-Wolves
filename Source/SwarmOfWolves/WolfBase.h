@@ -17,7 +17,7 @@ public:
 	AWolfBase();
 
 	UPROPERTY(VisibleAnywhere)
-	float ScoutingStrength;
+	float ScoutingStrength = 0.f;
 
 protected:
 	// Called when the game starts or when spawned

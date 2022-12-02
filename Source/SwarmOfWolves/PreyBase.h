@@ -37,7 +37,7 @@ public:
 	FPreyData PreyData;
 
 	UPROPERTY(VisibleAnywhere)
-	float LifeStrength;
+	float LifeStrength = 0.f;
 
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
 	bool bIsWeakest = false;
@@ -52,10 +52,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
+	
 	UFUNCTION(BlueprintPure)
 	bool IsDead() const;
 

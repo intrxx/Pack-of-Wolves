@@ -38,13 +38,6 @@ void APreyBase::Tick(float DeltaTime)
 
 }
 
-// Called to bind functionality to input
-void APreyBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
-}
-
 bool APreyBase::IsDead() const
 {
 	if(CurrentHealth <= 0)

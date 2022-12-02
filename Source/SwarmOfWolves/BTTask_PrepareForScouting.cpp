@@ -2,11 +2,9 @@
 
 
 #include "BTTask_PrepareForScouting.h"
-
 #include "WolfAIController.h"
 #include "WolfBase.h"
 #include "BehaviorTree/BlackboardComponent.h"
-#include "Tasks/AITask_MoveTo.h"
 
 UBTTask_PrepareForScouting::UBTTask_PrepareForScouting()
 {
@@ -16,11 +14,9 @@ UBTTask_PrepareForScouting::UBTTask_PrepareForScouting()
 EBTNodeResult::Type UBTTask_PrepareForScouting::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	AWolfAIController* AIController = Cast<AWolfAIController>(OwnerComp.GetAIOwner());
-	AWolfBase* Wolf = Cast<AWolfBase>(AIController->GetPawn());
 	
 	AIController->GetBlackboardComponent()->GetLocationFromEntry("ScoutBeginningLocation",ScoutBeginningLocation);
 	Iterator = AIController->GetBlackboardComponent()->GetValueAsInt("ScoutingPreparationIterator");
-	ScoutEditableLocation = ScoutBeginningLocation;
 	
 	if(Iterator == 0)
 	{

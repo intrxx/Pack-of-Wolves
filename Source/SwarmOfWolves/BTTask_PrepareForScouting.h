@@ -20,7 +20,9 @@ class SWARMOFWOLVES_API UBTTask_PrepareForScouting : public UBTTask_MoveTo
 	
 
 protected:
+
+	// Iterator for adding different locations for scout preparation
 	int8 Iterator;
 	FVector ScoutBeginningLocation;
-	FVector ScoutEditableLocation;
+	
 };

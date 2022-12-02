@@ -2,10 +2,8 @@
 
 
 #include "WolfAIController.h"
-
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Perception/AIPerceptionComponent.h"
-
 #include "Perception/AISenseConfig.h"
 #include "Perception/AISenseConfig_Sight.h"
 
@@ -63,6 +61,8 @@ void AWolfAIController::OnTargetPerceptionUpdate_Delegate(AActor* Actor, FAIStim
 	case 0:
 			GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Red, "Spotted the prey!");
 			GetBlackboardComponent()->SetValueAsBool("bFoundPrey",true);
+			
+			GetBlackboardComponent()->SetValueAsVector("HowlerLocation", GetPawn()->GetActorLocation());
 	default:
 		return;
 	}
