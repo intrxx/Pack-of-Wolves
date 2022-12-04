@@ -26,9 +26,15 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<UAIPerceptionComponent> AIPerceptionComponent = nullptr;
 	TObjectPtr<class UAISenseConfig_Sight> SightConfig = nullptr;
+
+	FGenericTeamId TeamId = FGenericTeamId(1);
+	virtual FGenericTeamId GetGenericTeamId() const override;
 		
 	UPROPERTY(EditAnywhere)
 	class UBehaviorTree* WolfBehaviorTree;
+
+	UPROPERTY(EditDefaultsOnly, Category= "Animation")
+	UAnimationAsset* HowlAnimation;
 
 protected:
 	virtual void BeginPlay() override;

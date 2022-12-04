@@ -1,8 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "EngineUtils.h"
 #include "BTTask_FIndWeakestDeer.h"
+#include "EngineUtils.h"
 #include "BehaviorTree/BlackboardComponent.h"
+
 
 UBTTask_FIndWeakestDeer::UBTTask_FIndWeakestDeer()
 {

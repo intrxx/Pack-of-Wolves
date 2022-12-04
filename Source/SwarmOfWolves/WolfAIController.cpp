@@ -2,7 +2,9 @@
 
 
 #include "WolfAIController.h"
+#include "WolfBase.h"
 #include "BehaviorTree/BlackboardComponent.h"
+#include "BehaviorTree/Tasks/BTTask_PlayAnimation.h"
 #include "Perception/AIPerceptionComponent.h"
 #include "Perception/AISenseConfig.h"
 #include "Perception/AISenseConfig_Sight.h"
@@ -59,15 +61,39 @@ void AWolfAIController::OnTargetPerceptionUpdate_Delegate(AActor* Actor, FAIStim
 	switch (Stimulus.Type)
 	{
 	case 0:
-			GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Red, "Spotted the prey!");
-			GetBlackboardComponent()->SetValueAsBool("bFoundPrey",true);
-			
-			GetBlackboardComponent()->SetValueAsVector("HowlerLocation", GetPawn()->GetActorLocation());
+			if(GetBlackboardComponent()->GetValueAsBool("bFoundPrey") == false || GetBlackboardComponent()->GetValueAsBool("bFoundPrey") == NULL)
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Red, "Spotted the prey!");
+				AWolfBase* Wolf = Cast<AWolfBase>(GetPawn());
+				if(Wolf == nullptr)
+				{
+					return;
+				}
+				
+				if(HowlAnimation == nullptr)
+				{
+					return;
+				}
+				Wolf->GetMesh()->PlayAnimation(HowlAnimation, false);
+				
+				if(Wolf->GetMesh()->IsPlaying())
+				{
+					GetBlackboardComponent()->SetValueAsVector("HowlerLocation", GetPawn()->GetActorLocation());
+					GetBlackboardComponent()->SetValueAsObject("Prey", Actor);
+					GetBlackboardComponent()->SetValueAsBool("bFoundPrey",true);
+				}
+			}
 	default:
 		return;
 	}
 	
 }
+
+FGenericTeamId AWolfAIController::GetGenericTeamId() const
+{
+	return TeamId;
+}
+
 
 
 
