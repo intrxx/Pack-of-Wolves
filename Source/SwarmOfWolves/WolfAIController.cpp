@@ -29,11 +29,14 @@ void AWolfAIController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if(WolfBehaviorTree)
+	if(bRunBT)
 	{
-		RunBehaviorTree(WolfBehaviorTree);
+		if(WolfBehaviorTree)
+		{
+			RunBehaviorTree(WolfBehaviorTree);
+		}
 	}
-
+	
 	AIPerceptionComponent->OnTargetPerceptionUpdated.AddDynamic(this, &AWolfAIController::OnTargetPerceptionUpdate_Delegate);
 }
 

@@ -21,21 +21,25 @@ EBTNodeResult::Type UBTTask_PrepareForScouting::ExecuteTask(UBehaviorTreeCompone
 	if(Iterator == 0)
 	{
 		ScoutBeginningLocation.Y += 700;
+		ScoutBeginningLocation.X += FMath::RandRange(-100,100);
 		AIController->GetBlackboardComponent()->SetValueAsInt("ScoutingPreparationIterator", 1);
 	}
 	else if(Iterator == 1)
 	{
 		ScoutBeginningLocation.Y -= 700;
+		ScoutBeginningLocation.X += FMath::RandRange(-100,100);
 		AIController->GetBlackboardComponent()->SetValueAsInt("ScoutingPreparationIterator", 2);
 	}
 	else if(Iterator == 2)
 	{
 		ScoutBeginningLocation.X -= 700;
+		ScoutBeginningLocation.Y += FMath::RandRange(-100,100);
 		AIController->GetBlackboardComponent()->SetValueAsInt("ScoutingPreparationIterator", 3);
 	}
 	else if(Iterator == 3)
 	{
 		ScoutBeginningLocation.X += 700;
+		ScoutBeginningLocation.Y += FMath::RandRange(-100,100);
 		AIController->GetBlackboardComponent()->SetValueAsBool("bPreparedForScouting", true);
 	}
 	GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Red, FString::Printf(TEXT("Move to Location: %s"), *ScoutBeginningLocation.ToString()));

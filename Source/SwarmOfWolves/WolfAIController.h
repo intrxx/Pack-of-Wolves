@@ -36,6 +36,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category= "Animation")
 	UAnimationAsset* HowlAnimation;
 
+	UPROPERTY()
+	bool bRunBT = true;
+
 protected:
 	virtual void BeginPlay() override;
 	
