@@ -25,6 +25,10 @@
 		{
 			"Name": "AlembicHairImporter",
 			"Enabled": true
+		},
+		{
+			"Name": "VirtualHeightfieldMesh",
+			"Enabled": true
 		}
 	]
 }
