@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "WolfBase.h"
 #include "BehaviorTree/Tasks/BTTask_BlackboardBase.h"
 #include "BTTask_AttackThePrey.generated.h"
 
@@ -18,4 +19,5 @@ public:
 	UBTTask_AttackThePrey();
 
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
+	AWolfBase* TempAttacker;
 };

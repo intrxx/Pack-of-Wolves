@@ -2,6 +2,8 @@
 
 #include "PreyBase.h"
 
+#include "Components/CapsuleComponent.h"
+
 
 // Sets default values
 APreyBase::APreyBase()
@@ -20,6 +22,7 @@ void APreyBase::BeginPlay()
 	OriginTransform = GetTransform();
 
 	CurrentHealth = MaxHealth;
+	bIsWeakest = false;
 
 	DeerAIController = Cast<ADeerAIController>(GetController());
 	if(!DeerAIController)
@@ -37,6 +40,25 @@ void APreyBase::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+
+void APreyBase::ApplyDamage(float Damage)
+{
+	CurrentHealth -= Damage;
+
+	if(IsDead())
+	{
+		APreyBase* Prey = Cast<APreyBase>(DeerAIController->GetPawn());
+		if(Prey)
+		{
+			if(DeathMontage)
+			{
+				Prey->GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+				Prey->PlayAnimMontage(DeathMontage);
+			}
+		}
+	}
+}
+
 
 bool APreyBase::IsDead() const
 {

@@ -34,7 +34,7 @@ public:
 	class UBehaviorTree* WolfBehaviorTree;
 
 	UPROPERTY(EditDefaultsOnly, Category= "Animation")
-	UAnimationAsset* HowlAnimation;
+	UAnimMontage* HowlAnimation;
 
 	UPROPERTY()
 	bool bRunBT = true;

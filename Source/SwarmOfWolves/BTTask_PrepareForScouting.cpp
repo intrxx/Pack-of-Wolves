@@ -42,7 +42,7 @@ EBTNodeResult::Type UBTTask_PrepareForScouting::ExecuteTask(UBehaviorTreeCompone
 		ScoutBeginningLocation.Y += FMath::RandRange(-100,100);
 		AIController->GetBlackboardComponent()->SetValueAsBool("bPreparedForScouting", true);
 	}
-	GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Red, FString::Printf(TEXT("Move to Location: %s"), *ScoutBeginningLocation.ToString()));
+	//GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Red, FString::Printf(TEXT("Move to Location: %s"), *ScoutBeginningLocation.ToString()));
 	
 	AIController->GetBlackboardComponent()->SetValueAsVector(GetSelectedBlackboardKey(), ScoutBeginningLocation);
 	FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);

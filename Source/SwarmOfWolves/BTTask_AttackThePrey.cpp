@@ -2,7 +2,7 @@
 
 
 #include "BTTask_AttackThePrey.h"
-
+#include "EngineUtils.h"
 #include "PreyBase.h"
 #include "WolfAIController.h"
 #include "WolfBase.h"
@@ -17,7 +17,18 @@ EBTNodeResult::Type UBTTask_AttackThePrey::ExecuteTask(UBehaviorTreeComponent& O
 {
 	AWolfAIController* AIController = Cast<AWolfAIController>(OwnerComp.GetAIOwner());
 	APreyBase* Prey = Cast<APreyBase>(AIController->GetBlackboardComponent()->GetValueAsObject("Prey"));
+
+	TArray<AWolfBase*> PotentialScouts;
 	
+	for(TActorIterator<AWolfBase> ActorITr(GetWorld()); ActorITr; ++ActorITr)
+	{
+		PotentialScouts.Push(*ActorITr);
+	}
+	
+	float RandNumber = FMath::RandRange(0,3);
+	TempAttacker = PotentialScouts[RandNumber];
+
+	AIController->GetBlackboardComponent()->SetValueAsObject("Attacker", TempAttacker);
 	AIController->GetBlackboardComponent()->SetValueAsVector(BlackboardKey.SelectedKeyName, Prey->GetActorLocation());
 	
 	//AIController->BrainComponent->StopLogic("Reached Prey");

@@ -77,14 +77,11 @@ void AWolfAIController::OnTargetPerceptionUpdate_Delegate(AActor* Actor, FAIStim
 				{
 					return;
 				}
-				Wolf->GetMesh()->PlayAnimation(HowlAnimation, false);
+				Wolf->PlayAnimMontage(HowlAnimation);
 				
-				if(Wolf->GetMesh()->IsPlaying())
-				{
-					GetBlackboardComponent()->SetValueAsVector("HowlerLocation", GetPawn()->GetActorLocation());
-					GetBlackboardComponent()->SetValueAsObject("Prey", Actor);
-					GetBlackboardComponent()->SetValueAsBool("bFoundPrey",true);
-				}
+				GetBlackboardComponent()->SetValueAsVector("HowlerLocation", GetPawn()->GetActorLocation());
+				GetBlackboardComponent()->SetValueAsObject("Prey", Actor);
+				GetBlackboardComponent()->SetValueAsBool("bFoundPrey",true);
 			}
 	default:
 		return;

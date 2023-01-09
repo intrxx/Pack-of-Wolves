@@ -8,7 +8,6 @@
 
 #include "BTT_PlayAnimationMontage.h"
 #include "TimerManager.h"
-#include "GameFramework/Actor.h"
 #include "WolfAIController.h"
 #include "WolfBase.h"
 

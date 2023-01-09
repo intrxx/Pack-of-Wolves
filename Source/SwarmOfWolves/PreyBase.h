@@ -39,7 +39,7 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	float LifeStrength = 0.f;
 
-	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	bool bIsWeakest = false;
 
 	UFUNCTION()
@@ -55,14 +55,20 @@ public:
 	
 	UFUNCTION(BlueprintPure)
 	bool IsDead() const;
+	
+	UPROPERTY(EditAnywhere)
+	float CurrentHealth;
 
+	UFUNCTION()
+	void ApplyDamage(float Damage);
+
+	UPROPERTY(EditAnywhere)
+	UAnimMontage* DeathMontage;
+	
 private:
 	UPROPERTY(EditAnywhere)
 	float MaxHealth = 100.f;
-
-	UPROPERTY(VisibleAnywhere)
-	float CurrentHealth;
-
+	
 	UPROPERTY()
 	class ADeerAIController* DeerAIController;
 	
