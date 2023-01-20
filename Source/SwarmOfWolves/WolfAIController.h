@@ -39,7 +39,15 @@ public:
 	UPROPERTY()
 	bool bRunBT = true;
 
+	void OnAnimMontageTimerDone();
+
 protected:
 	virtual void BeginPlay() override;
+
+	FTimerDelegate TimerDelegate;
+	FTimerHandle TimerHandle;
+	
+	
+	
 	
 };

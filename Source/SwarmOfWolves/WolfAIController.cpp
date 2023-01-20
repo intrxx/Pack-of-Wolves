@@ -2,6 +2,8 @@
 
 
 #include "WolfAIController.h"
+
+#include "BTT_PlayAnimationMontage.h"
 #include "WolfBase.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "BehaviorTree/Tasks/BTTask_PlayAnimation.h"
@@ -36,7 +38,7 @@ void AWolfAIController::BeginPlay()
 			RunBehaviorTree(WolfBehaviorTree);
 		}
 	}
-	
+	TimerDelegate = FTimerDelegate::CreateUObject(this, &AWolfAIController::OnAnimMontageTimerDone);
 	AIPerceptionComponent->OnTargetPerceptionUpdated.AddDynamic(this, &AWolfAIController::OnTargetPerceptionUpdate_Delegate);
 }
 
@@ -66,6 +68,9 @@ void AWolfAIController::OnTargetPerceptionUpdate_Delegate(AActor* Actor, FAIStim
 	case 0:
 			if(GetBlackboardComponent()->GetValueAsBool("bFoundPrey") == false || GetBlackboardComponent()->GetValueAsBool("bFoundPrey") == NULL)
 			{
+				GetBlackboardComponent()->SetValueAsObject("Prey", Actor);
+				GetBlackboardComponent()->SetValueAsVector("PreyLocation", Actor->GetActorLocation());
+				
 				GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Red, "Spotted the prey!");
 				AWolfBase* Wolf = Cast<AWolfBase>(GetPawn());
 				if(Wolf == nullptr)
@@ -77,11 +82,11 @@ void AWolfAIController::OnTargetPerceptionUpdate_Delegate(AActor* Actor, FAIStim
 				{
 					return;
 				}
+				const float FinishDelay = HowlAnimation->GetPlayLength();
 				Wolf->PlayAnimMontage(HowlAnimation);
+				GetWorld()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, FinishDelay, false);
 				
-				GetBlackboardComponent()->SetValueAsVector("HowlerLocation", GetPawn()->GetActorLocation());
-				GetBlackboardComponent()->SetValueAsObject("Prey", Actor);
-				GetBlackboardComponent()->SetValueAsBool("bFoundPrey",true);
+				
 			}
 	default:
 		return;
@@ -94,6 +99,10 @@ FGenericTeamId AWolfAIController::GetGenericTeamId() const
 	return TeamId;
 }
 
-
+void AWolfAIController::OnAnimMontageTimerDone()
+{
+	GetBlackboardComponent()->SetValueAsVector("HowlerLocation", GetPawn()->GetActorLocation());
+	GetBlackboardComponent()->SetValueAsBool("bFoundPrey",true);
+}
 
 

@@ -45,7 +45,7 @@ void APreyBase::ApplyDamage(float Damage)
 {
 	CurrentHealth -= Damage;
 
-	if(IsDead())
+	if(CurrentHealth < 0)
 	{
 		APreyBase* Prey = Cast<APreyBase>(DeerAIController->GetPawn());
 		if(Prey)

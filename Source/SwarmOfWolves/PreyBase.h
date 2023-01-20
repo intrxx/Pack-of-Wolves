@@ -56,10 +56,10 @@ public:
 	UFUNCTION(BlueprintPure)
 	bool IsDead() const;
 	
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float CurrentHealth;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void ApplyDamage(float Damage);
 
 	UPROPERTY(EditAnywhere)

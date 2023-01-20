@@ -4,6 +4,7 @@
 #include "BTT_PlayAnimationMontage.h"
 #include "TimerManager.h"
 #include "GameFramework/Actor.h"
+#include "BehaviorTree/BlackboardComponent.h"
 #include "WolfAIController.h"
 #include "WolfBase.h"
 
@@ -36,6 +37,7 @@ EBTNodeResult::Type UBTT_PlayAnimationMontage::ExecuteTask(UBehaviorTreeComponen
 		}
 		else
 		{
+			WAIController->GetBlackboardComponent()->SetValueAsBool("bAttacking",false);
 			Result = EBTNodeResult::Succeeded;
 		}
 	}
@@ -46,4 +48,5 @@ EBTNodeResult::Type UBTT_PlayAnimationMontage::ExecuteTask(UBehaviorTreeComponen
 void UBTT_PlayAnimationMontage::OnAnimMontageTimerDone()
 {
 	FinishLatentTask(*MyOwnerComp, EBTNodeResult::Succeeded);
+	
 }
