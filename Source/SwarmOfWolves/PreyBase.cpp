@@ -45,17 +45,11 @@ void APreyBase::ApplyDamage(float Damage)
 {
 	CurrentHealth -= Damage;
 
-	if(CurrentHealth < 0)
+	
+	if(IsDead())
 	{
-		APreyBase* Prey = Cast<APreyBase>(DeerAIController->GetPawn());
-		if(Prey)
-		{
-			if(DeathMontage)
-			{
-				Prey->GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-				Prey->PlayAnimMontage(DeathMontage);
-			}
-		}
+		bIsDead = true;
+		
 	}
 }
 

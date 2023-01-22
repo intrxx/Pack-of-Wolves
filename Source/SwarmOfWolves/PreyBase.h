@@ -57,7 +57,10 @@ public:
 	bool IsDead() const;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float CurrentHealth;
+	float CurrentHealth = 150.f;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bIsDead = false;
 
 	UFUNCTION(BlueprintCallable)
 	void ApplyDamage(float Damage);
@@ -67,7 +70,7 @@ public:
 	
 private:
 	UPROPERTY(EditAnywhere)
-	float MaxHealth = 100.f;
+	float MaxHealth = 150.f;
 	
 	UPROPERTY()
 	class ADeerAIController* DeerAIController;
