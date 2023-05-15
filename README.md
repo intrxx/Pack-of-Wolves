@@ -1,6 +1,6 @@
 # Pack-of-Wolves
 
-Small simulation of pack of wolves haunting behaviour.
+Small simulation of pack of wolves hunting behaviour.
 
 This project is done in Unreal Engine 5 using c++, Blueprints, Behavioural Trees, AI Perception and Environmental Queries. 
 
